@@ -6,10 +6,10 @@ body
 .loginBox
 {
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 40%;
     width: 350px;
-    height: 350px;
+    height: 450px;
     box-shadow: 0 10px 20px;
     border: transparent;
 
