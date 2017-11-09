@@ -6,16 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11fa446c-c7a4-49d8-a0ac-4cf3bf8de549" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HTML/AttendingEvents.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HTML/Events.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HTML/Logout.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HTML/Profile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Style/Events.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore/.gitignore" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTML/NavBar.html" afterPath="$PROJECT_DIR$/HTML/NavBar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Libary/css/bootstrap.css" afterPath="$PROJECT_DIR$/Libary/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Style/NavBar.css" afterPath="$PROJECT_DIR$/Style/NavBar.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -213,12 +204,12 @@
       <workItem from="1509977122807" duration="21374000" />
       <workItem from="1510005441953" duration="52000" />
       <workItem from="1510005495062" duration="625000" />
-      <workItem from="1510249295604" duration="9059000" />
+      <workItem from="1510249295604" duration="9681000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31110000" />
+    <option name="totallyTimeSpent" value="31732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
