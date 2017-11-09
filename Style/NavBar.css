@@ -3,12 +3,9 @@
 {
     background-color:#2b669a !important;
     border-color: #2b669a !important;
+    height: 55px;
+    font-size: 20px;
 
 }
-.navbar-inverse:hover{
 
-}
 
-#navbar-nav:hover{
-    background-color: #2e6da4;
-}

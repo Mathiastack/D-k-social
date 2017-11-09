@@ -1,0 +1,9 @@
+.EventBox {
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    width: 15px !important;
+    height: 200px;
+    box-shadow: 0 10px 20px;
+    border: transparent;
+    }

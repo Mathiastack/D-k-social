@@ -5005,10 +5005,14 @@ a.badge:focus {
   display: block;
   padding: 4px;
   margin-bottom: 20px;
+  width:35%;
+  height: 250px;
   line-height: 1.42857143;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 4px;
+  border-color: #1b6d85;
+
   -webkit-transition: border .2s ease-in-out;
        -o-transition: border .2s ease-in-out;
           transition: border .2s ease-in-out;
