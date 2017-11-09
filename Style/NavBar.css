@@ -1,0 +1,14 @@
+
+.navbar-inverse
+{
+    background-color:#2b669a !important;
+    border-color: #2b669a !important;
+
+}
+.navbar-inverse:hover{
+
+}
+
+#navbar-nav:hover{
+    background-color: #2e6da4;
+}
