@@ -25,27 +25,36 @@
         <h3>Sign in to DØK SOCIAL</h3>
         <form>
             <div class="inputBox">
-                <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1">
+                <input type="text" class="form-control" id="textEmail" placeholder="Email"
+                       aria-describedby="sizing-addon1">
                 <i class="fa fa-user"></i>
 
-            <div class="inputBox">
-                <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
-                <span><i class="fa fa-user" aria-hidden="true"></i></span>
-            </div>
+                <div class="inputBox">
+                    <input type="password" id="textPassword" class="form-control" placeholder="Password"
+                           aria-describedby="sizing-addon1">
+                    <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                </div>
 
-            <div class="btn">
-                <a href="Login.html"><button type="button" class="NewAccountButton">Login</button></a>
-                <div>
+                <div class="btn">
+                    <button type="button" id="clickLogin" class="NewAccountButton">Login</button>
+                    <div>
 
-                <a href="New%20user.html"><button type="button" class="NewAccountButton">Create new account</button></a>
+                        <a href="New%20user.html">
+                            <button type="button" class="NewAccountButton">Create new account</button>
+                        </a>
+                    </div>
                 </div>
             </div>
-            </div>
-            </div>
         </form>
-
     </div>
+    </form>
+
+</div>
 </div>
 
+<script src="../Libary/js/jquery-3.2.1.js"></script>
+<script src="../Javascript/Sdk.js"></script>
+<script src="../Javascript/Login.js"></script>
+<script> SDK.loadNav();</script>
 </body>
 </html>

@@ -13,7 +13,8 @@ const SDK = {
         $.ajax({
             url: SDK.serverURL + options.url,
             method: options.method,
-            headers: headers,
+            headers: {
+                "authorization":sessionStorage.getItem("token")},
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify(options.data),
@@ -28,19 +29,44 @@ const SDK = {
 
     loadNav: (call) => {
         $("#nav-container").load("NavBar.html", () => {
-            if (currentUser) {
+            if (currentStudent) {
                 $(".navbar-right").html(`
 
             <li><a href="AttendingEvents.html" id="clickAttendingEvents">Attendingevents</a></li>
             <li><a href="Profile.html" id="clickProfile">Profile</a></li>
             <li><a href = "Logout.html" id="clickLogout">Logout</a></li>
-            <li><a href="Events.html" id="clickEvents">Events</li>
+          
           `);
             } else {
                 $(".navbar-right").html(`
-            <li><a href="Events"> <span class="sr-only">(current)</span></a></li>
+            <li><a href="Events"> <span class="sr-only">(currentStudent)</span></a></li>
           `);
             }
 
         });
-    }
+    },
+
+    login: (email, password, call) => {
+        SDK.request({
+                data: {
+                    email: email,
+                    password: password
+                },
+                url: "/login",
+                method: "POST"
+            },
+            (err, data) => {
+                if (err) return call(err);
+
+                console.log(1, data);
+// tager alt data der er til token
+                sessionStorage.setItem("token", data);
+
+
+                call(null, data);
+
+            });
+    },
+};
+
+
