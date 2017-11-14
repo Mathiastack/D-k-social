@@ -5,7 +5,20 @@
     border-color: #2b669a !important;
     height: 55px;
     font-size: 20px;
+    font-weight: bold;
+
 
 }
+.loginLogo{
+    height: 45px;
 
-
+}
+#clickLogout{
+    left:1390%;
+}
+#LogoutLogo{
+    margin-top: 12px;
+    left:4163%;
+    font-size: 30px;
+    color: #ffffff;
+}

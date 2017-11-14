@@ -6,10 +6,10 @@ body
 .loginBox
 {
     position: absolute;
-    top: 35%;
-    left: 40%;
-    width: 350px;
-    height: 350px;
+    top: 25%;
+    left: 38%;
+    width: 450px;
+    height: 450px;
     box-shadow: 0 10px 20px;
     border: transparent;
 
@@ -41,4 +41,19 @@ body
 
 
 }
+.NewAccountButton{
+    border-radius: 9px;
+    background-color: #2e6da4;
+
+    color: #eeeeee;
+    font-weight: bold;
+    margin-bottom: 2em;
+    text-transform: uppercase;
+    width: 350px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    display: inline-block;
+}
+
 
