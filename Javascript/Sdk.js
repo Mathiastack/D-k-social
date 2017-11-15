@@ -1,20 +1,23 @@
 const SDK = {
     serverURL: "http://localhost:8080/api",
     request: (options, call) => {
-
-        let headers = {};
-        if (options.headers) {
-            Object.keys(options.headers).forEach((h) => {
-                headers[h] = (typeof options.headers[h] === 'object') ? JSON.stringify(options.headers[h]) : options.headers[h];
-            });
+        /*
+                let headers = {};
+                if (options.headers) {
+                    Object.keys(options.headers).forEach((h) => {
+                        headers[h] = (typeof options.headers[h] === 'object') ? JSON.stringify(options.headers[h]) : options.headers[h];
+                    });
+                }
+                */
+        let token = {
+            "authorization": sessionStorage.getItem("token")
         }
 // Denne mode er blevet inspireret af Jesper "javascript-client" Moden laver et ajax kald, der sætter parametrene for kommunikation med
         // serveren
         $.ajax({
             url: SDK.serverURL + options.url,
             method: options.method,
-            headers: {
-                "authorization":sessionStorage.getItem("token")},
+            headers: token,
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify(options.data),
@@ -32,17 +35,49 @@ const SDK = {
             if (currentStudent) {
                 $(".navbar-right").html(`
 
-            <li><a href="AttendingEvents.html" id="clickAttendingEvents">Attendingevents</a></li>
-            <li><a href="Profile.html" id="clickProfile">Profile</a></li>
-            <li><a href = "Logout.html" id="clickLogout">Logout</a></li>
+            <li><a href="AttendingEvents.html">Attendingevents</a></li>
+            <li><a href="Profile.html">Profile</a></li>
+            <li><a href = "Events.html" id="#">Events</a></li>
           
           `);
             } else {
                 $(".navbar-right").html(`
-            <li><a href="Events"> <span class="sr-only">(currentStudent)</span></a></li>
+    
           `);
             }
+            $("#clickLogout").click(() => SDK.logout());
+            call && call();
 
+        });
+    },
+    logout: () => {
+        /* SDK.request({
+             method: "POST",
+             url: "/students/logout",
+             data: data
+         }, call);
+         */
+
+        //Fjerner token og user objekt fra sessionStorage
+        sessionStorage.removeItem("token");
+        window.location.href = "Login.html";
+
+    },
+    create: (firstName, lastName, email, password, verifypassword, call) => {
+        SDK.request({
+            data: {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
+                verifyPassword: verifypassword
+            },
+            method: "POST",
+            url: "/register"
+
+        }, (err, data) => {
+            if (err) return call(err)
+            call(null, data);
         });
     },
 
@@ -58,15 +93,17 @@ const SDK = {
             (err, data) => {
                 if (err) return call(err);
 
-                console.log(1, data);
-// tager alt data der er til token
+
+// tager alt data der er til token. Det er her den sætter token.
                 sessionStorage.setItem("token", data);
 
 
                 call(null, data);
 
             });
-    },
+
+    }
 };
+
 
 

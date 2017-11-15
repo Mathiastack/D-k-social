@@ -6,7 +6,7 @@ $(document).ready(() => {
         const password = $("#textPassword").val();
 
 
-        SDK.login(email, password, (err, call) => {
+        SDK.login(email, password, (err, data) => {
             if (err) {
                 return "fejl";
             }
