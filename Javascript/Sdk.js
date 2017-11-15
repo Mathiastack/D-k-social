@@ -50,31 +50,33 @@ const SDK = {
 
         });
     },
-    logout: () => {
-        /* SDK.request({
+    logout: (studentId, call) => {
+         SDK.request({
              method: "POST",
              url: "/students/logout",
-             data: data
-         }, call);
-         */
+             data: studentId,
+         }, (err, data) => {
+             if (err) return call(err);
+             call(null, data);
+
+         });
 
         //Fjerner token og user objekt fra sessionStorage
-        sessionStorage.removeItem("token");
+     /*   sessionStorage.removeItem("token");
         window.location.href = "Login.html";
-
+*/
     },
-    create: (firstName, lastName, email, password, verifypassword, call) => {
+    create: (firstName, lastName, email, password, verifyPassword, call) => {
         SDK.request({
             data: {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
                 password: password,
-                verifyPassword: verifypassword
+                verifyPassword: verifyPassword
             },
             method: "POST",
             url: "/register"
-
         }, (err, data) => {
             if (err) return call(err)
             call(null, data);

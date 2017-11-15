@@ -5,8 +5,8 @@ $(document).ready(() => {
         const firstName = $("#createFirstName").val();
         const lastName = $("#createLastName").val();
         const email = $("#createEmail").val();
-        const password = $("#createPass").val();
-        const verifyPassword = $("#verifyPass").val();
+        const password = $("#createPassword").val();
+        const verifyPassword = $("#verifyPassword").val();
 
         if (!firstName || !lastName || !email || !password || !verifyPassword) {
             console.log(firstName)
@@ -14,7 +14,7 @@ $(document).ready(() => {
             console.log(email)
             console.log(password)
             console.log(verifyPassword)
-            alert("You are missing som elements")
+            alert("You are missing some elements")
         } else {
             if (password.valueOf() === verifyPassword.valueOf()) {
                 SDK.create(firstName, lastName, email, password, verifyPassword, (err, data) => {
@@ -29,7 +29,7 @@ $(document).ready(() => {
                     }
                 });
             }else{
-                alert("password dosent match")
+                alert("password doesnt match")
 
                     }
                 }
