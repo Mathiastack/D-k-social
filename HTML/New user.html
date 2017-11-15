@@ -4,6 +4,7 @@
 
     <link rel="stylesheet" href="../Style/New%20user.css">
     <link rel="stylesheet" href="../Libary/css/bootstrap.css">
+    <link rel="stylesheet" href="../Style/New%20user.css">
 
     <meta charset="UTF-8">
     <title>Create a new account</title>
@@ -12,7 +13,7 @@
 <div class="loginBox">
     <div class="glass">
 
-        <h3>Make your new account</h3>
+        <h3><span class="frontText">Make your new account</span></h3>
         <form>
             <div class="inputBox">
                 <input type="text" id="createFirstName" name="" placeholder="First name">
@@ -20,7 +21,7 @@
             </div>
 
             <div class="inputBox">
-                <input type="text" id="createLastName" name="" placeholder="Last name">
+                <input type="text" id="createLastName" name="" placeholder="Last name" aria-describedby="sizing-addon1"
                 <span><i class="fa fa-user" aria-hidden="true"></i></span>
             </div>
             <div class="inputBox">
@@ -37,7 +38,10 @@
                 <span><i class="fa fa-user" aria-hidden="true"></i></span>
             </div>
             <div class="btn">
-                <button style="margin-bottom: auto" class="btn btn-primary btn-lg btn-block" id="createAccount">Create account</button>
+                <button style="margin-bottom: auto" class="newAccountButton" id="createAccount">Create account</button>
+                <div>
+                <button style="margin-bottom: auto" class="backButton" id="back-Button">Back</button>
+            </div>
             </div>
         </form>
     </div>

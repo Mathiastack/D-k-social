@@ -33,20 +33,7 @@ const SDK = {
     loadNav: (call) => {
         $("#nav-container").load("NavBar.html", () => {
             if (currentStudent) {
-                $(".navbar-right").html(`
-
-            <li><a href="AttendingEvents.html">Attendingevents</a></li>
-            <li><a href="Profile.html">Profile</a></li>
-            <li><a href = "Events.html" id="#">Events</a></li>
-          
-          `);
-            } else {
-                $(".navbar-right").html(`
-    
-          `);
             }
-            $("#clickLogout").click(() => SDK.logout());
-            call && call();
 
         });
     },

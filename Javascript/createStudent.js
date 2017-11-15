@@ -9,33 +9,29 @@ $(document).ready(() => {
         const verifyPassword = $("#verifyPassword").val();
 
         if (!firstName || !lastName || !email || !password || !verifyPassword) {
-            console.log(firstName)
-            console.log(lastName)
-            console.log(email)
-            console.log(password)
-            console.log(verifyPassword)
-            alert("You are missing some elements")
+
+            alert("You are missing some information, please try again")
         } else {
             if (password.valueOf() === verifyPassword.valueOf()) {
                 SDK.create(firstName, lastName, email, password, verifyPassword, (err, data) => {
                     if (err && err.xhr.status === 400) {
-                        console.log("FIND PÅ NOGET");
+                        $(".form-group").addClass("Client fail");
                     }
                     else if (err) {
                         console.log("error happened")
                     } else {
-                        window.alert("Your do now have a user")
+                        window.alert("Your do now have a user");
                         window.location.href = "Login.html";
                     }
                 });
             }else{
                 alert("password doesnt match")
 
-                    }
-                }
+            }
+        }
 
-                });
-            });
+    });
+});
 
 
 
