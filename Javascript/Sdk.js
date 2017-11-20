@@ -29,6 +29,27 @@ const SDK = {
             }
         })
     },
+    currentStudent: () => {
+        const  loadStudent = SDK.sessionStorage.getItem("StudentUser")
+        return loadStudent.currentStudent();
+
+    },
+    loadCurrentStudent: (cb) => {
+        SDK.request({
+            method: "GET",
+            url: "/students/profile",
+            headers: {
+                authorization: SDK.sessionStorage.load("token"),
+            },
+        }, (err, user) => {
+            if (err) {
+                return cb(err);
+            }
+            SDK.sessionStorage.getItem("User", user);
+            cb(null, user);
+        });
+    },
+
 
     loadNav: (call) => {
         $("#nav-container").load("NavBar.html", () => {
@@ -37,21 +58,16 @@ const SDK = {
 
         });
     },
-    logout: (studentId, call) => {
+    logout: (data, call) => {
+        var token = {
+            token:sessionStorage.getItem("token")
+        }
          SDK.request({
              method: "POST",
              url: "/students/logout",
-             data: studentId,
-         }, (err, data) => {
-             if (err) return call(err);
-             call(null, data);
+             data: token},call);
+        sessionStorage.removeItem("token")
 
-         });
-
-        //Fjerner token og user objekt fra sessionStorage
-     /*   sessionStorage.removeItem("token");
-        window.location.href = "Login.html";
-*/
     },
     create: (firstName, lastName, email, password, verifyPassword, call) => {
         SDK.request({
@@ -67,6 +83,19 @@ const SDK = {
         }, (err, data) => {
             if (err) return call(err)
             call(null, data);
+        });
+    },
+
+    loadEvents: (call) => {
+        SDK.request({
+            method: "GET",
+            url: "/events",
+            headers: {
+                authorization: sessionStorage.getItem("token"),
+            },
+        }, (err, course) => {
+            if (err) return call(err);
+            call(null, course)
         });
     },
 
