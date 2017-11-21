@@ -4,23 +4,37 @@
 
     <link rel="stylesheet" href="../Libary/css/bootstrap.css">
     <link rel="stylesheet" href="../Style/Events.css">
+    <link rel="stylesheet" href="../Style/NavBar.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img class="loginLogo" src="../Libary/img/logo2.png"> </a>
+        </div>
+        <ul class="nav navbar-nav">
 
-<div id="nav-container"></div>
+            <li><a href="Events.html">Events</a></li>
+            <li><a href="AttendingEvents.html">Attending events</a></li>
+            <li><a href="myEvents.html">My events</a></li>
+            <li><a id="clickProfile" href="Profile.html">Profile</a></li>
+            <li><a id="clickLogout" href="Login.html">Logud</a></li>
+            <li><span class="glyphicon glyphicon-log-out" id="LogoutLogo" aria-hidden="true"></span></li>
+
+        </ul>
+    </div>
+</nav>
 
 <div class="container">
 
-
     <!--Table til at indeholde alle bøger i systemet-->
     <div class="page-header">
-        <button type="button" id="clickLogin" class="addEvent"> + Add Event(s)</button>
+        <button type="button" href="addEvent.html"  id="addEvent" class="addEvent"> + Add Event(s)</button>
         <h1> Se alle events</h1>
 
     </div>
-
 
     <table class="table">
 
@@ -31,7 +45,7 @@
         <th>Location</th>
         <th>Date</th>
         </thead>
-        <tbody id="booksTableBody">
+        <tbody id="eventTabel">
 
         </tbody>
     </table>
@@ -41,6 +55,6 @@
 
 <script src="../Javascript/Sdk.js"></script>
 <script src="../Libary/js/jquery-3.2.1.js"></script>
-<script> SDK.loadNav();</script>
+<script src="../Javascript/Events.js"></script>
 </body>
 </html>

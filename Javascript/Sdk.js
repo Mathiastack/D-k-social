@@ -29,17 +29,20 @@ const SDK = {
             }
         })
     },
-    currentStudent: () => {
-        const  loadStudent = SDK.sessionStorage.getItem("StudentUser")
+
+    currentStudent: (data) => {
+        const  loadStudent = SDK.sessionStorage.load(data)
         return loadStudent.currentStudent();
 
     },
+
+
     loadCurrentStudent: (cb) => {
         SDK.request({
             method: "GET",
             url: "/students/profile",
             headers: {
-                authorization: SDK.sessionStorage.load("token"),
+                authorization: SDK.sessionStorage.getItem("token"),
             },
         }, (err, user) => {
             if (err) {
@@ -51,13 +54,15 @@ const SDK = {
     },
 
 
+/*
     loadNav: (call) => {
         $("#nav-container").load("NavBar.html", () => {
-            if (currentStudent) {
-            }
+
+
 
         });
     },
+    */
     logout: (data, call) => {
         var token = {
             token:sessionStorage.getItem("token")

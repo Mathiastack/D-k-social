@@ -1,8 +1,8 @@
 $(document).ready(() => {
 
-    SDK.loadEvents();
+    SDK.loadEvents((err, data) => {
+        console.log(data);
+    });
 
 
-
-
-}
+});
