@@ -20,7 +20,7 @@
             <li><a href="AttendingEvents.html">Attending events</a></li>
             <li><a href="myEvents.html">My events</a></li>
             <li><a id="clickProfile" href="Profile.html">Profile</a></li>
-            <li><a id="clickLogout" href="Login.html">Logud</a></li>
+            <li><button id="clickLogout" href="Login.html">Logud</button></li>
             <li><span class="glyphicon glyphicon-log-out" id="LogoutLogo" aria-hidden="true"></span></li>
 
         </ul>
@@ -31,7 +31,8 @@
 
     <!--Table til at indeholde alle bøger i systemet-->
     <div class="page-header">
-        <button type="button" href="addEvent.html"  id="addEvent" class="addEvent"> + Add Event(s)</button>
+        <a href="addEvent.html">
+        <button type="button"   id="addEvent" class="addEvent"> + Add Event(s)</button></a>
         <h1> Se alle events</h1>
 
     </div>
@@ -56,5 +57,6 @@
 <script src="../Javascript/Sdk.js"></script>
 <script src="../Libary/js/jquery-3.2.1.js"></script>
 <script src="../Javascript/Events.js"></script>
+<script src="../Javascript/logout.js"></script>
 </body>
 </html>

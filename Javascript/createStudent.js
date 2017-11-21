@@ -20,8 +20,8 @@ $(document).ready(() => {
                     else if (err) {
                         console.log("error happened")
                     } else {
-                        window.alert("Your do now have a user");
-                        window.location.href = "Login.html";
+                        window.alert(firstName + "user has been made");
+                        window.location.href = "Login.html"
                     }
                 });
             }else{

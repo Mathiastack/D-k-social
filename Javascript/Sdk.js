@@ -1,14 +1,7 @@
 const SDK = {
     serverURL: "http://localhost:8080/api",
     request: (options, call) => {
-        /*
-                let headers = {};
-                if (options.headers) {
-                    Object.keys(options.headers).forEach((h) => {
-                        headers[h] = (typeof options.headers[h] === 'object') ? JSON.stringify(options.headers[h]) : options.headers[h];
-                    });
-                }
-                */
+
         let token = {
             "authorization": sessionStorage.getItem("token")
         }
@@ -31,7 +24,7 @@ const SDK = {
     },
 
     currentStudent: (data) => {
-        const  loadStudent = SDK.sessionStorage.load(data)
+        const  loadStudent = SDK.sessionStorage.getItem(data)
         return loadStudent.currentStudent();
 
     },
@@ -48,30 +41,23 @@ const SDK = {
             if (err) {
                 return cb(err);
             }
-            SDK.sessionStorage.getItem("User", user);
+            sessionStorage.getItem("User", user);
             cb(null, user);
         });
     },
 
 
-/*
-    loadNav: (call) => {
-        $("#nav-container").load("NavBar.html", () => {
-
-
-
-        });
-    },
-    */
-    logout: (data, call) => {
-        var token = {
-            token:sessionStorage.getItem("token")
-        }
+    logout: (call) => {
          SDK.request({
              method: "POST",
-             url: "/students/logout",
-             data: token},call);
-        sessionStorage.removeItem("token")
+             url: "/students/logout"
+         }, (err, data) => {
+             if (err) {
+                 return call(err);
+             }
+             sessionStorage.removeItem("token");
+             cb(null, data);
+         });
 
     },
     create: (firstName, lastName, email, password, verifyPassword, call) => {
@@ -119,6 +105,7 @@ const SDK = {
 
 // tager alt data der er til token. Det er her den sætter token.
                 sessionStorage.setItem("token", data);
+
 
 
                 call(null, data);
