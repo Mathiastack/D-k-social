@@ -4,7 +4,7 @@ $(document).ready(() => {
    //const studentId = SDK.currentStudent();
     $("#clickLogout").click((e) => {
         e.preventDefault();
-        console.log('logout was clicked');
+
         SDK.logout((err, data) => {
             if (err && err.xhr.status == 401) {
                 console.log("error");

@@ -56,7 +56,7 @@ const SDK = {
              if (err) {
                  return call(err);
              }
-             sessionStorage.removeItem("token");
+
              cb(null, data);
          });
 
@@ -85,9 +85,9 @@ const SDK = {
             headers: {
                 authorization: sessionStorage.getItem("token"),
             },
-        }, (err, course) => {
+        }, (err, event) => {
             if (err) return call(err);
-            call(null, course)
+            call(null, event)
         });
     },
     createEvent: (price, eventName, description, eventDate, location, call) => {
@@ -110,6 +110,18 @@ const SDK = {
                return call(err);
             }
             call(null, data);
+        });
+    },
+    loadMyEvents: (call) => {
+        SDK.request({
+            method: "GET",
+            url: "/events/myEvents",
+            headers: {
+                authorization: sessionStorage.getItem("token"),
+            },
+        }, (err, event) => {
+            if (err) return call(err);
+            call(null, event)
         });
     },
 
