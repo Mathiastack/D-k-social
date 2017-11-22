@@ -1,5 +1,6 @@
 $(document).ready(() => {
 
+
     $("#createAccount").click(() => {
 
         const firstName = $("#createFirstName").val();
@@ -12,24 +13,29 @@ $(document).ready(() => {
 
             alert("You are missing some information, please try again")
         } else {
+
             if (password.valueOf() === verifyPassword.valueOf()) {
+
                 SDK.create(firstName, lastName, email, password, verifyPassword, (err, data) => {
                     if (err && err.xhr.status === 400) {
-                        $(".form-group").addClass("Client fail");
-                    }
-                    else if (err) {
                         console.log("error happened")
+                        $(".form-group").addClass("Client fail");
                     } else {
-                        window.alert(firstName + "user has been made");
-                        window.location.href = "Login.html"
+
+                        window.alert(firstName + "\t" + "your user has been made");
+                        window.location.href = "Login.html";
+
                     }
                 });
-            }else{
-                alert("password doesnt match")
 
+            } else {
+                alert("password doest match")
             }
         }
-
+    });
+    $("#btnBack").click(() => {
+        console.log("eewg");
+        window.location.href = "Login.html";
     });
 });
 

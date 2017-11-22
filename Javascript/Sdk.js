@@ -1,3 +1,4 @@
+const debug = true;
 const SDK = {
     serverURL: "http://localhost:8080/api",
     request: (options, call) => {
@@ -24,25 +25,25 @@ const SDK = {
     },
 
     currentStudent: (data) => {
-        const  loadStudent = SDK.sessionStorage.getItem(data)
+        const  loadStudent = sessionStorage.getItem(data)
         return loadStudent.currentStudent();
 
     },
 
 
-    loadCurrentStudent: (cb) => {
+    loadCurrentStudent: (call) => {
         SDK.request({
             method: "GET",
             url: "/students/profile",
             headers: {
-                authorization: SDK.sessionStorage.getItem("token"),
+                authorization: sessionStorage.getItem("token"),
             },
         }, (err, user) => {
             if (err) {
-                return cb(err);
+                return call(err);
             }
-            sessionStorage.getItem("User", user);
-            cb(null, user);
+            sessionStorage.setItem("User", user);
+            call(null, user);
         });
     },
 
@@ -87,6 +88,28 @@ const SDK = {
         }, (err, course) => {
             if (err) return call(err);
             call(null, course)
+        });
+    },
+    createEvent: (price, eventName, description, eventDate, location, call) => {
+        SDK.request({
+            data: {
+                price: price,
+                eventName: eventName,
+                description: description,
+                eventDate: eventDate,
+                location: location
+            },
+            method: "POST",
+            url: "/events",
+            headers: {
+                authorization: sessionStorage.getItem("token")
+            },
+        }, (err, data) => {
+            if (err){
+               debug && console.log ("hej");
+               return call(err);
+            }
+            call(null, data);
         });
     },
 

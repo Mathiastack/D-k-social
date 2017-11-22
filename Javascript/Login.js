@@ -10,8 +10,14 @@ $(document).ready(() => {
             if (err) {
                 return "fejl";
             }
-
-            window.location.href = "Events.html";
+            SDK.loadCurrentStudent((err, data) => {
+                if (err) {
+                    console.log("error");
+                } else {
+                    console.log("succes in load");
+                    window.location.href = "Events.html";
+                }
+            });
 
         });
 

@@ -1,17 +1,13 @@
 $(document).ready(() => {
 
-    const $eventtabel = $("#eventTable");
+    const $eventTable = $("#eventTable");
 
     SDK.loadEvents((call, events) => {
         events = JSON.parse(events);
         events.forEach((event) => {
             const eventHtml = `
                      <tr>
-                    
-                      <td>${event.idEvent}</td>
-                      
-                      <td>${event.owner}</td>
-                    
+                     
                       <td>${event.location}</td>
                       
                       <td>${event.price}</td>
@@ -25,7 +21,7 @@ $(document).ready(() => {
                       </tr>
                       `;
 
-            $eventtabel.append(eventHtml)
+            $eventTable.append(eventHtml)
 
         });
 
@@ -41,5 +37,32 @@ $(document).ready(() => {
         });
 
     });
+
+});
+
+    $("#createEvent").click(() => {
+
+        const price = $("#createPrice").val();
+        const eventName = $("#createEventName").val();
+        const description = $("#createDescription").val();
+        const eventDate = $("#createEventDate").val();
+        const location = $("#createLocation").val();
+
+        if (!price || !eventName || !description || !eventDate || !location) {
+console.log("hej");
+            alert("You are missing some information, please try again")
+        } else {
+            SDK.createEvent(price, eventName, location, description, eventDate, (err, data) => {
+                if (err && err.xhr.status === 400) {
+                    $(".form-group").addClass("Client fail");
+                }
+                else if (err) {
+                    console.log("error happened")
+                } else {
+                    window.alert(eventName + "user has been made");
+                    window.location.href = "Events.html"
+                }
+            });
+        }
 
 });

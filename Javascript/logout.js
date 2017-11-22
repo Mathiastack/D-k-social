@@ -1,7 +1,7 @@
 $(document).ready(() => {
-    console.log("logout loaded");
 
-    //const studentId = SDK.currentStudent();
+
+   //const studentId = SDK.currentStudent();
     $("#clickLogout").click((e) => {
         e.preventDefault();
         console.log('logout was clicked');
@@ -12,6 +12,7 @@ $(document).ready(() => {
                 console.log(data);
 
                 sessionStorage.removeItem("token");
+                sessionStorage.removeItem("User");
                 window.location.href = "Login.html";
             }
         });
