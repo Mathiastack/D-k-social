@@ -2,11 +2,9 @@ $(document).ready(() => {
 
     const eventTable = $("#eventTable");
 
-    SDK.loadEvents((call, data) => {
-        if (call) {
-           throw call;
-        }
-        let events = JSON.parse(data);
+    SDK.loadEvents((err, data) => {
+        if (err) throw err;
+        const events = JSON.parse(data);;
         $.each(events, function (i, call) {
             var tr = '<tr>';
             tr += '<td>' + events[i].idEvent + '</td>';
@@ -28,14 +26,13 @@ $(document).ready(() => {
 
                 for (let i = 0; i < events.length; i++) {
                     if (id == events[i].idEvent) {
-                        console.log('joining event!');
 
                         SDK.joinEvent(events[i].idEvent, (err, data) => {
 
                             if (err) {
                                 throw err;
                             } else {
-                                alert("your joined the event");
+                                window.alert("you joined the event \n See your events in attending events");
                             }
 
                         });
@@ -55,10 +52,10 @@ $(document).ready(() => {
 
 
         const eventName = $("#createEventName").val();
-        const location = $("#createLocation").val();
-        const price = $("#createPrice").val();
+        const location = $("#createEventLocation").val();
+        const price = $("#createEventPrice").val();
         const eventDate = $("#createEventDate").val();
-        const description = $("#createDescription").val();
+        const description = $("#createEventDescription").val();
 
         if (!eventName || !location || !price || !eventDate || !description) {
             alert("You are missing some information, please try again")

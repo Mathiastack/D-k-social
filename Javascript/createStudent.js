@@ -23,7 +23,7 @@ $(document).ready(() => {
                     } else {
 
                         window.alert(firstName + "\t" + "your user has been made");
-                        window.location.href = "Login.html";
+                        window.location.href = "./HTML/Login.html";
 
                     }
                 });
@@ -34,8 +34,7 @@ $(document).ready(() => {
         }
     });
     $("#btnBack").click(() => {
-        console.log("eewg");
-        window.location.href = "Login.html";
+        window.location.href = "./HTML/Login.html";
     });
 });
 

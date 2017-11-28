@@ -8,7 +8,7 @@ $(document).ready(() => {
 
    const studentHTML = `
     <tr>
-
+    
         <td>${students.firstName}</td>
 
         <td>${students.lastName}</td>

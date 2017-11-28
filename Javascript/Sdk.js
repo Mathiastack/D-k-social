@@ -49,10 +49,10 @@ const SDK = {
             headers: {
                 authorization: sessionStorage.getItem("token"),
             },
-        }, (err, user) => {
+        }, (err, student) => {
             if (err) return call(err);
-            sessionStorage.setItem("User", user);
-            call(null, user);
+            sessionStorage.setItem("student", student);
+            call(null, student);
         });
     },
 
@@ -159,7 +159,7 @@ const SDK = {
             method: "PUT",
             data: {
                 idEvent: idEvent,
-    },
+            },
             url: "/events/" + idEvent + "/delete-event",
             headers: {
                 authorization: sessionStorage.getItem("token"),
@@ -170,24 +170,62 @@ const SDK = {
 
                 return (err)
             }
-                call(null, event)
+            call(null, event)
 
 
         });
     },
 
-        attendingStudents: (idEvent, callback) => {
-            SDK.request({
-                method: "GET",
-                url: "/events/" + idEvent + "/students",
-                headers: {
-                    authorization: sessionStorage.getItem("token"),
-                },
-            }, (err, event) => {
-                if (err) return callback(err);
-                callback(null, event)
-            });
+    attendingStudents: (idEvent, callback) => {
+        SDK.request({
+            method: "GET",
+            url: "/events/" + idEvent + "/students",
+            headers: {
+                authorization: sessionStorage.getItem("token"),
+            },
+        }, (err, event) => {
+            if (err) return callback(err);
+            callback(null, event)
+        });
 
+    },
+    seeAttendingEvents:(call) => {
+        let idStudent = JSON.parse(sessionStorage.getItem("student")).idStudent;
+        SDK.request({
+            method: "GET",
+            url: "/students/" + idStudent + "/events",
+            headers: {
+                authorization: sessionStorage.getItem("token"),
+            },
+        }, (err, event) => {
+            if (err) {
+                return call(err);
+            }
+            call(null, event)
+        })
+
+},
+    updateEvent: (idEvent, eventName, location, price, eventDate, description, call) => {
+        SDK.request({
+            data: {
+                idEvent: idEvent,
+                eventName: eventName,
+                location: location,
+                price: price,
+                eventDate: eventDate,
+                description: description,
+            },
+            method: "put",
+            url: "/events/" + idEvent + "/update-event",
+            headers: {
+                authorization: sessionStorage.getItem("token"),
+            },
+        }, (err, data) => {
+            if (err) {
+                return call(err);
+            }
+            call(null, data);
+        });
     },
 
     getProfile: (call) => {

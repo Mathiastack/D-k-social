@@ -52,11 +52,55 @@
 
 </div>
 
+<!-- Modal for edit event - bootstrap -->
+<div id="eventModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Editing event</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label" for="inputEventName">Event name</label>
+                    <input type="text" class="form-control" id="inputEventName" placeholder="A name for your event">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="inputLocation">Location</label>
+                    <input type="text" class="form-control" id="inputLocation" placeholder="Location">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="inputPrice">Price</label>
+                    <input type="number" class="form-control" id="inputPrice" placeholder="Price">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="inputEventDate">Date</label>
+                    <input type="text" class="form-control" id="inputEventDate" placeholder="dd/mm/yyyy">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="inputDescription">Description</label>
+                    <input type="" class="form-control" id="inputDescription" placeholder="Description">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="editBtn">Edit event</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
 
 <script src="../Javascript/Sdk.js"></script>
 <script src="../Libary/js/jquery-3.2.1.js"></script>
 <script src="../Javascript/myEvents.js"></script>
 <script src="../Javascript/logout.js"></script>
+<script src="../Libary/js/bootstrap.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-$(document).ready(() => {
+    $(document).ready(() => {
 
 
    //const studentId = SDK.currentStudent();
@@ -12,7 +12,7 @@ $(document).ready(() => {
                 console.log(data);
 
                 sessionStorage.removeItem("token");
-                sessionStorage.removeItem("User");
+                sessionStorage.removeItem("student");
                 window.location.href = "Login.html";
             }
         });
