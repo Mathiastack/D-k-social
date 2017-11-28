@@ -1,12 +1,16 @@
 body
 {
-    background: url(https://www.studiocitytattoo.com/wp-content/uploads/2017/10/Copenhagen_Feature_Image.jpg);
-
+    background-image: url("Img/Copenhagen_Feature_Image.jpg");
+    background-size: 100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
 }
 .loginBox
 {
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 38%;
     width: 450px;
     height: 450px;

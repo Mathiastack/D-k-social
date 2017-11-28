@@ -1,4 +1,4 @@
-const debug = true;
+
 const SDK = {
     serverURL: "http://localhost:8080/api",
     request: (options, call) => {
@@ -25,11 +25,22 @@ const SDK = {
     },
 
     currentStudent: (data) => {
-        const  loadStudent = sessionStorage.getItem(data)
-        return loadStudent.currentStudent();
-
+        const loadStudent = sessionStorage.getItem("User")
+        return loadStudent.currentStudent;
     },
+    // denne metode er til, når brugeren skal kunne hans profil.
 
+    student: (call) => {
+        SDK.request({
+            method: "GET",
+            url: "/students/profile"
+        }), (err, data) => {
+
+            if (err) return call(err);
+
+        }
+        call(null, data);
+    },
 
     loadCurrentStudent: (call) => {
         SDK.request({
@@ -39,9 +50,7 @@ const SDK = {
                 authorization: sessionStorage.getItem("token"),
             },
         }, (err, user) => {
-            if (err) {
-                return call(err);
-            }
+            if (err) return call(err);
             sessionStorage.setItem("User", user);
             call(null, user);
         });
@@ -49,16 +58,16 @@ const SDK = {
 
 
     logout: (call) => {
-         SDK.request({
-             method: "POST",
-             url: "/students/logout"
-         }, (err, data) => {
-             if (err) {
-                 return call(err);
-             }
+        SDK.request({
+            method: "POST",
+            url: "/students/logout"
+        }, (err, data) => {
+            if (err) {
+                return call(err);
+            }
 
-             cb(null, data);
-         });
+            cb(null, data);
+        });
 
     },
     create: (firstName, lastName, email, password, verifyPassword, call) => {
@@ -77,6 +86,25 @@ const SDK = {
             call(null, data);
         });
     },
+    joinEvent: (idEvent, call) => {
+        SDK.request({
+            method: "POST",
+            data: {
+                idEvent: idEvent,
+
+            },
+            url: "/events/join",
+            headers: {
+                authorization: sessionStorage.getItem("token"),
+            },
+
+        }, (err, data) => {
+            if (err) {
+                return call(err);
+            }
+            call(null, data);
+        });
+    },
 
     loadEvents: (call) => {
         SDK.request({
@@ -90,14 +118,16 @@ const SDK = {
             call(null, event)
         });
     },
-    createEvent: (price, eventName, description, eventDate, location, call) => {
+    createEvent: (eventName, location, price, eventDate, description, call) => {
         SDK.request({
             data: {
-                price: price,
                 eventName: eventName,
-                description: description,
+                location: location,
+                price: price,
                 eventDate: eventDate,
-                location: location
+                description: description
+
+
             },
             method: "POST",
             url: "/events",
@@ -105,9 +135,9 @@ const SDK = {
                 authorization: sessionStorage.getItem("token")
             },
         }, (err, data) => {
-            if (err){
-               debug && console.log ("hej");
-               return call(err);
+            if (err) {
+                console.log("hej");
+                return call(err);
             }
             call(null, data);
         });
@@ -124,6 +154,52 @@ const SDK = {
             call(null, event)
         });
     },
+    deleteEvent: (idEvent, call) => {
+        SDK.request({
+            method: "PUT",
+            data: {
+                idEvent: idEvent,
+    },
+            url: "/events/" + idEvent + "/delete-event",
+            headers: {
+                authorization: sessionStorage.getItem("token"),
+            }
+
+        }, (err, event) => {
+            if (err) {
+
+                return (err)
+            }
+                call(null, event)
+
+
+        });
+    },
+
+        attendingStudents: (idEvent, callback) => {
+            SDK.request({
+                method: "GET",
+                url: "/events/" + idEvent + "/students",
+                headers: {
+                    authorization: sessionStorage.getItem("token"),
+                },
+            }, (err, event) => {
+                if (err) return callback(err);
+                callback(null, event)
+            });
+
+    },
+
+    getProfile: (call) => {
+        SDK.request({
+            method: "GET",
+            url: "/students/profile",
+            headers: {
+                authorization: sessionStorage.getItem("token")}
+        },
+            call);
+    },
+
 
     login: (email, password, call) => {
         SDK.request({
@@ -140,7 +216,6 @@ const SDK = {
 
 // tager alt data der er til token. Det er her den sætter token.
                 sessionStorage.setItem("token", data);
-
 
 
                 call(null, data);

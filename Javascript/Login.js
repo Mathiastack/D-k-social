@@ -12,7 +12,6 @@ $(document).ready(() => {
             }
             SDK.loadCurrentStudent((err, data) => {
                 if (err) {
-                    console.log("error");
                 } else {
                     console.log("succes in load");
                     window.location.href = "Events.html";
