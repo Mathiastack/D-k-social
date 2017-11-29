@@ -41,10 +41,41 @@ $(document).ready(() => {
             }
         });
 
-                    $("button.attendingStudents").on('click', function () {
+        $(".seeAttendingStudents").click(function(){
+
+            var idEvent = $(this).data("event-id-see");
+
+            console.log(idEvent);
+
+            SDK.attendingStudents(idEvent, (cb, students) => {
+                if(students){
+                    students = JSON.parse(students);
+                    students.forEach((student) => {
+                        console.log(student.firstName);
+
+                        const attendingStudentsHtml = `           
+                                                          
+                                          <p>${student.firstName} ${student.lastName}</p>
+            
+                    `;
+
+                        $seeAttendingStudents.append(attendingStudentsHtml)
+                    });
+                } else {
+                    $("#seeAttendingStudents").html("Either no one is attending this event, or there was en error.");
+                }
+
+
+
+            });
 
 
         });
+
+    });
+
+
+
 
     });
 

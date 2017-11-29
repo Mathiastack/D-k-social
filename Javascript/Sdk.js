@@ -14,9 +14,9 @@ const SDK = {
             headers: token,
             contentType: "application/json",
             dataType: "json",
-            data: JSON.stringify(options.data),
+            data: JSON.stringify(SDK.Encryption.encrypt(JSON.stringify(options.data))),
             success: (data, status, xhr) => {
-                call(null, data, status, xhr);
+                call(null, SDK.Encryption.decrypt(data), status, xhr );
             },
             error: (xhr, status, errorThrown) => {
                 call({xhr: xhr, status: status, error: errorThrown});
@@ -253,14 +253,39 @@ const SDK = {
 
 
 // tager alt data der er til token. Det er her den sætter token.
-                sessionStorage.setItem("token", data);
+                sessionStorage.setItem("token", JSON.parse(data));
 
 
                 call(null, data);
 
             });
-
-    }
+    },
+        Encryption: {
+            encrypt: (encrypt) => {
+                if (encrypt !== undefined && encrypt.length !== 0) {
+                    const fields = ['J', 'M', 'F'];
+                    let encrypted = '';
+                    for (let i = 0; i < encrypt.length; i++) {
+                        encrypted += (String.fromCharCode((encrypt.charAt(i)).charCodeAt(0) ^ (fields[i % fields.length]).charCodeAt(0)))
+                    }
+                    return encrypted;
+                } else {
+                    return encrypt;
+                }
+            },
+                decrypt: (decrypt) => {
+                if (decrypt.length > 0 && decrypt !== undefined) {
+                    const fields = ['J', 'M', 'F'];
+                    let decrypted = '';
+                    for (let i = 0; i < decrypt.length; i++) {
+                        decrypted += (String.fromCharCode((decrypt.charAt(i)).charCodeAt(0) ^ (fields[i % fields.length]).charCodeAt(0)))
+                    }
+                    return decrypted;
+                } else {
+                    return decrypt;
+                }
+            }
+        },
 };
 
 

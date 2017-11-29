@@ -13,6 +13,7 @@
 
                 sessionStorage.removeItem("token");
                 sessionStorage.removeItem("student");
+                sessionStorage.removeItem("chosenEvent");
                 window.location.href = "Login.html";
             }
         });
