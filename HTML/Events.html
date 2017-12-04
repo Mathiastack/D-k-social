@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
 
-    <link rel="stylesheet" href="../Libary/css/bootstrap.css">
+    <link rel="stylesheet" href="../Library/css/bootstrap.css">
     <link rel="stylesheet" href="../Style/Events.css">
     <link rel="stylesheet" href="../Style/NavBar.css">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <img class="loginLogo" src="../Libary/img/logo2.png"> </a>
+            <img class="loginLogo" src="../Library/img/logo2.png">
         </div>
         <ul class="nav navbar-nav">
 
             <li><a href="Events.html">Events</a></li>
-            <li><a href="AttendingEvents.html">Attending events</a></li>
+            <li><a href="attendingEvents.html">Attending events</a></li>
             <li><a href="myEvents.html">My events</a></li>
-            <li><a id="clickProfile" href="Profile.html">Profile</a></li>
+            <li><a id="clickProfile" href="profile.html">Profile</a></li>
             <li><a id="clickLogout" href="Login.html">Logud</a></li>
             <li><span class="glyphicon glyphicon-log-out" id="LogoutLogo" aria-hidden="true"></span></li>
 
@@ -42,7 +42,7 @@
 
         <thead>
         <tr>
-            <!-- har givet id en class "idEvent", for at kunne gøre at den ikke skal vise rækken. -->
+
             <th>id</th>
             <th>Name</th>
             <th>location</th>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="createEventDescription">Description</label>
-                    <input type="" class="form-control" id="createEventDescription" placeholder="Description">
+                    <input type="text" class="form-control" id="createEventDescription" placeholder="Description">
                 </div>
             </div>
             <div class="modal-footer">
@@ -98,13 +98,56 @@
     </div>
 </div>
 
+
+
+<div id="attendingStudentModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Attending students</b></h4>
+            </div>
+            <div class="modal-body" id="seeAttendingStudents">
+                <table class="table">
+
+                    <thead>
+                    <tr>
+
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+
+                    </tr>
+                    <tbody id="loadAttendingStudents">
+
+                    </tbody>
+                    </thead>
+
+
+
+                </table>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="clearModal" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 
-<script src="../Javascript/Sdk.js"></script>
-<script src="../Libary/js/jquery-3.2.1.js"></script>
-<script src="../Javascript/Events.js"></script>
+
+<script src="../Javascript/sdk.js"></script>
+<script src="../Library/js/jquery-3.2.1.js"></script>
+<script src="../Javascript/events.js"></script>
 <script src="../Javascript/logout.js"></script>
-<script src="../Libary/js/bootstrap.js"></script>
+<script src="../Library/js/bootstrap.js"></script>
+
 </body>
+
 </html>

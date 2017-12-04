@@ -18,7 +18,7 @@ $(document).ready(() => {
 
                 SDK.create(firstName, lastName, email, password, verifyPassword, (err, data) => {
                     if (err && err.xhr.status === 400) {
-                        console.log("error happened")
+                        console.log("error happened");
                         $(".form-group").addClass("Client fail");
                     } else {
 
