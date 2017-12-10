@@ -24,7 +24,7 @@ const SDK = {
     },
 
     currentStudent: (data) => {
-        const loadStudent = sessionStorage.getItem("User")
+        const loadStudent = sessionStorage.getItem("Student")
         return loadStudent.currentStudent;
     },
     // denne metode er til, når brugeren skal kunne hans profil.

@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-
+//nedenfor metode, bruges til at oprette en bruger, som bliver lageret over i vores database.
     $("#createAccount").click(() => {
 
         const firstName = $("#createFirstName").val();
@@ -23,7 +23,7 @@ $(document).ready(() => {
                     } else {
 
                         window.alert(firstName + "\t" + "your user has been made");
-                        window.location.href = "./HTML/Login.html";
+                        window.location.href = "login.html";
 
                     }
                 });
@@ -34,7 +34,7 @@ $(document).ready(() => {
         }
     });
     $("#btnBack").click(() => {
-        window.location.href = "./HTML/Login.html";
+        window.location.href = "login.html";
     });
 });
 

@@ -1,5 +1,5 @@
 $(document).ready(() => {
-
+//her er vores login metode, den bliver brugt når useren skal logge ind.
     $("#clickLogin").click(() => {
 
         const email = $("#textEmail").val();
@@ -14,7 +14,7 @@ $(document).ready(() => {
                 if (err) {
                 } else {
                     console.log("succes in load");
-                    window.location.href = "Events.html";
+                    window.location.href = "events.html";
                 }
             });
 
