@@ -1,5 +1,4 @@
 $(document).ready(() => {
-
 //nedenfor metode, bruges til at oprette en bruger, som bliver lageret over i vores database.
     $("#createAccount").click(() => {
 
@@ -36,6 +35,7 @@ $(document).ready(() => {
     $("#btnBack").click(() => {
         window.location.href = "login.html";
     });
+
 });
 
 
