@@ -24,22 +24,22 @@ $(document).ready(() => {
 
         $(".attend-button").on('click', function () {
 // jQuery selecter :eq
-                let id = $(this).closest("tr").find("td:eq(0)").text();
+            let id = $(this).closest("tr").find("td:eq(0)").text();
 
-                for (let i = 0; i < events.length; i++) {
-                    if (id == events[i].idEvent) {
+            for (let i = 0; i < events.length; i++) {
+                if (id == events[i].idEvent) {
 
-                        SDK.joinEvent(events[i].idEvent, (err, data) => {
+                    SDK.joinEvent(events[i].idEvent, (err, data) => {
 
-                            if (err) {
-                                throw err;
-                            } else {
-                                window.alert("you joined the event \n See your events in attending events");
-                            }
+                        if (err) {
+                            throw err;
+                        } else {
+                            window.alert("you joined the event \n See your events in attending events");
+                        }
 
-                        });
-                    }
+                    });
                 }
+            }
 
         });
 
@@ -49,39 +49,32 @@ $(document).ready(() => {
 
             for (let i = 0; i < events.length; i++) {
                 if (name == events[i].idEvent) {
-
-
                     SDK.getAttendingStudents(events[i].idEvent, (call, students) => {
 
-                        const loadAttendingStudents = $("#seeAttendingStudents");
+                        const loadAttendingStudents = $("#loadAttendingStudents");
                         if (students) {
                             students = JSON.parse(students);
-                            students.forEach(( student) => {
+                            students.forEach((student) => {
                                 let tr = '<tr>';
                                 tr += '<td>' + student.firstName + '</td>';
                                 tr += '<td>' + student.lastName + '</td>';
                                 tr += '<td>' + student.email + '</td>';
-
-
-
                                 loadAttendingStudents.append(tr);
-
                             });
-
                         } else {
                             window.alert("There are no attending students");
                         }
-
-
                     });
-
                 }
             }
-            $("#clearModal").on('click', function () {
+            $(".close").on('click', function () {
                 $("#attendingStudentBtn").modal('hide');
+                $("#loadAttendingStudents").empty();
             });
-
-
+            $('#clearModal').on('click', function () {
+                $("#attendingStudentBtn").modal('hide');
+                $("#loadAttendingStudents").empty();
+            });
         });
 
 // denne metoder bliver brugt, når der skal laves et event.
@@ -105,7 +98,7 @@ $(document).ready(() => {
                         console.log("error happened")
                     } else {
                         window.alert(eventName + "Event has been made");
-                        window.location.href = "../events.html"
+                        window.location.href = "events.html"
                     }
                 });
 
