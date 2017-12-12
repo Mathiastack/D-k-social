@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../Style/NavBar.css">
-    <link rel="stylesheet" href="../Library/css/bootstrap.css">
-    <link rel="stylesheet" href="../Style/profile.css">
+    <link rel="stylesheet" href="Style/navBar.css">
+    <link rel="stylesheet" href="Library/css/bootstrap.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Attending events</title>
 </head>
 <body>
+<div id="nav-container"></div>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <img class="loginLogo" src="../Library/img/logo2.png"> </a>
+            <img class="loginLogo" src="Library/img/logo2.png"> </a>
         </div>
         <ul class="nav navbar-nav">
 
-            <li><a href="Events.html">Events</a></li>
+            <li><a href="events.html">Events</a></li>
             <li><a href="attendingEvents.html">Attending events</a></li>
             <li><a href="myEvents.html">My events</a></li>
             <li><a id="clickProfile" href="Profile.html">Profile</a></li>
-            <li><a id="clickLogout" href="Login.html">Logud</a></li>
+            <li><a id="clickLogout" href="login.html">Logout</a></li>
             <li><span class="glyphicon glyphicon-log-out" id="LogoutLogo" aria-hidden="true"></span></li>
 
         </ul>
     </div>
 </nav>
+
 <div class="container">
     <div class="page-header">
-        <h1> Profile information</h1>
+        <h1> Your attending events</h1>
 
     </div>
 
@@ -36,19 +37,25 @@
 
         <thead>
         <tr>
+
             <th>Name </th>
-            <th>Lastname</th>
-            <th>Email</th>
+            <th>location </th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Description</th>
         </tr>
         </thead>
-        <tbody id="studentTable">
+        <tbody id="myAttendingEventsTable">
+
         </tbody>
     </table>
 
+
+<script src="Javascript/sdk.js"></script>
+<script src="Library/js/jquery-3.2.1.js"></script>
+<script src="Javascript/myAttendingEvents.js"></script>
+<script src="Javascript/logout.js"></script>
 </div>
+
 </body>
-<script src="../Javascript/sdk.js"></script>
-<script src="../Library/js/jquery-3.2.1.js"></script>
-<script src="../Javascript/logout.js"></script>
-<script src="../Javascript/profile.js"></script>
 </html>

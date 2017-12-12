@@ -20,6 +20,7 @@ $(document).ready(() => {
             i + 1;
             eventTable.append(tr);
         });
+//attend-button bliver brugt, når en user gerne vil tilmelde sig til et evenet. Hvor jeg har brugt en jQuery selecter: eq.
 
         $(".attend-button").on('click', function () {
 // jQuery selecter :eq
@@ -43,7 +44,7 @@ $(document).ready(() => {
         });
 
         $(".attendingStudentBtn").on('click', function () {
-            //Her bliver der brugt en jQuery selecter :eq, så vi får den rigtige række, med det event vi ønsker
+            //Her bliver der brugt en jQuery selecter :eq, så vi får den rigtige række, med det event useren  ønsker
             let name = $(this).closest("tr").find("td:eq(0)").text();
 
             for (let i = 0; i < events.length; i++) {
@@ -104,7 +105,7 @@ $(document).ready(() => {
                         console.log("error happened")
                     } else {
                         window.alert(eventName + "Event has been made");
-                        window.location.href = "Events.html"
+                        window.location.href = "../events.html"
                     }
                 });
 

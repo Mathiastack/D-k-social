@@ -1,5 +1,5 @@
 $(document).ready(() => {
-
+// denne metode bruges til at se, hvilke events vi deltager i.
     const myAttendingEventsTable = $("#myAttendingEventsTable")
     SDK.getAttendingEvents((err, data) => {
         if (err) {

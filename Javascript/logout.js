@@ -1,7 +1,7 @@
     $(document).ready(() => {
 
 
-   //const studentId = SDK.currentStudent();
+   //Her er min logout metode, her bliver useren logget ud og alt userens sessionstorage bliver ryddet.
     $("#clickLogout").click((e) => {
         e.preventDefault();
 
@@ -14,7 +14,7 @@
                 sessionStorage.removeItem("token");
                 sessionStorage.removeItem("student");
                 sessionStorage.removeItem("chosenEvent");
-                window.location.href = "Login.html";
+                window.location.href = "login.html";
             }
         });
     });
