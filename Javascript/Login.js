@@ -1,15 +1,16 @@
 $(document).ready(() => {
-//her er vores login metode, den bliver brugt når useren skal logge ind.
+    //her er vores login metode, den bliver brugt når useren skal logge ind.
     $("#clickLogin").click(() => {
 
         const email = $("#textEmail").val();
         const password = $("#textPassword").val();
 
-
+        // Kalder login funtionen.
         SDK.login(email, password, (err, data) => {
             if (err) {
                 return "fejl";
             }
+
             SDK.loadCurrentStudent((err, data) => {
                 if (err) {
                 } else {

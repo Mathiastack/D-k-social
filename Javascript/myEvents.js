@@ -20,13 +20,14 @@ $(document).ready(() => {
             myEventTable.append(tr);
 
         });
+        // Denne metode bruges til at slette et event.
         $(".deleteBtn").on('click', function () {
 
             if (window.confirm("Do you want to delete this event?")) {
                 var id = $(this).closest("tr").find("td:eq(0)").text();
                 for (var i = 0; i < events.length; i++) {
                     if (id == events[i].idEvent) {
-
+                        //Kalder deleteEvent funktionen
                         SDK.deleteEvent(events[i].idEvent, (err, data) => {
                             console.log("hej");
                             if (err) {
@@ -41,6 +42,7 @@ $(document).ready(() => {
                 }
             }
         });
+        // Denne metode bruges til at updatere et event.
         $(".update-button").on('click', function () {
                 var id = $(this).closest("tr").find("td:eq(0)").text();
                 for (var i = 0; i < events.length; i++) {

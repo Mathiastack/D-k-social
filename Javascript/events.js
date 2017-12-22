@@ -1,11 +1,12 @@
 $(document).ready(() => {
 
     const eventTable = $("#eventTable");
-// Denne metode bliver brugt, når vi skal loade alle vores events ind i vores tabel.
+    // Denne metode bliver brugt, når vi skal loade alle vores events ind i vores tabel.
     SDK.loadEvents((err, data) => {
         if (err) throw err;
         const events = JSON.parse(data);
         ;
+        //Opretter en række for hvert event, og tilføjer informationen til rækken.
         $.each(events, function (i, call) {
             var tr = '<tr>';
             tr += '<td>' + events[i].idEvent + '</td>';
@@ -20,15 +21,14 @@ $(document).ready(() => {
             i + 1;
             eventTable.append(tr);
         });
-//attend-button bliver brugt, når en user gerne vil tilmelde sig til et evenet. Hvor jeg har brugt en jQuery selecter: eq.
-
+        //attend-button bliver brugt, når en user gerne vil tilmelde sig til et evenet. Hvor jeg har brugt en jQuery selecter: eq.
         $(".attend-button").on('click', function () {
-// jQuery selecter :eq
+            // jQuery selecter :eq
             let id = $(this).closest("tr").find("td:eq(0)").text();
 
             for (let i = 0; i < events.length; i++) {
                 if (id == events[i].idEvent) {
-
+                    // Kalder joinevent funktionen.
                     SDK.joinEvent(events[i].idEvent, (err, data) => {
 
                         if (err) {
@@ -42,13 +42,14 @@ $(document).ready(() => {
             }
 
         });
-
+        // Denne metode giver brugeren muligheden for at se hvem der deltager.
         $(".attendingStudentBtn").on('click', function () {
-            //Her bliver der brugt en jQuery selecter :eq, så vi får den rigtige række, med det event useren  ønsker
+            // Her kigges der efter den knap brugeren trykket på i tabellen.
             let name = $(this).closest("tr").find("td:eq(0)").text();
-
+            // Kigger alle knapper igennem, indtil den finder knap brugeren trykket på.
             for (let i = 0; i < events.length; i++) {
                 if (name == events[i].idEvent) {
+                    // Kalder get attendingstudents funktionen.
                     SDK.getAttendingStudents(events[i].idEvent, (call, students) => {
 
                         const loadAttendingStudents = $("#loadAttendingStudents");
@@ -67,17 +68,19 @@ $(document).ready(() => {
                     });
                 }
             }
+            // denne metode lukker min modal
             $(".close").on('click', function () {
                 $("#attendingStudentBtn").modal('hide');
                 $("#loadAttendingStudents").empty();
             });
+            // denne metode sletter indeholdet i modalen.
             $('#clearModal').on('click', function () {
                 $("#attendingStudentBtn").modal('hide');
                 $("#loadAttendingStudents").empty();
             });
         });
 
-// denne metoder bliver brugt, når der skal laves et event.
+        // denne metoder bliver brugt, når der skal laves et event, opbygningen af metoden minder meget om opret bruger.
         $("#createEvent").click(() => {
 
 
@@ -86,7 +89,7 @@ $(document).ready(() => {
             const price = $("#createEventPrice").val();
             const eventDate = $("#createEventDate").val();
             const description = $("#createEventDescription").val();
-
+// Hvis alle felter ikke er udfyldt vil brugeren blive mødt af en pop op.
             if (!eventName || !location || !price || !eventDate || !description) {
                 alert("You are missing some information, please try again")
             } else {

@@ -1,12 +1,13 @@
 const SDK = {
+    // URL for serveren
     serverURL: "http://localhost:8080/api",
+    // SDK requests
     request: (options, call) => {
 
         let token = {
             "authorization": sessionStorage.getItem("token")
         }
-// Denne mode er blevet inspireret af Jesper "javascript-client" Moden laver et ajax kald, der sætter parametrene for kommunikation med
-        // serveren
+        // Denne mode er blevet inspireret af Jesper "javascript-client" Moden laver asynkrone kald til serveren.
         $.ajax({
             url: SDK.serverURL + options.url,
             method: options.method,
@@ -55,7 +56,7 @@ const SDK = {
         });
     },
 
-
+// Logud
     logout: (call) => {
         SDK.request({
             method: "POST",
@@ -69,6 +70,7 @@ const SDK = {
         });
 
     },
+    // Opret bruger
     create: (firstName, lastName, email, password, verifyPassword, call) => {
         SDK.request({
             data: {
@@ -85,6 +87,7 @@ const SDK = {
             call(null, data);
         });
     },
+    // request til at deltage i et event
     joinEvent: (idEvent, call) => {
         SDK.request({
             method: "POST",
@@ -104,7 +107,7 @@ const SDK = {
             call(null, data);
         });
     },
-
+// request til at loade alle events
     loadEvents: (call) => {
         SDK.request({
             method: "GET",
@@ -117,6 +120,7 @@ const SDK = {
             call(null, event)
         });
     },
+    // Request til at oprette event
     createEvent: (eventName, location, price, eventDate, description, call) => {
         SDK.request({
             data: {
@@ -141,6 +145,7 @@ const SDK = {
             call(null, data);
         });
     },
+    // request til at loade alle brugerens events
     loadMyEvents: (call) => {
         SDK.request({
             method: "GET",
@@ -153,6 +158,7 @@ const SDK = {
             call(null, event)
         });
     },
+    // Request til at slette et event.
     deleteEvent: (idEvent, call) => {
         SDK.request({
             method: "PUT",
@@ -174,7 +180,7 @@ const SDK = {
 
         });
     },
-
+// Request til at hente alle de bruger der deltager i et event.
     getAttendingStudents: (idEvent, call) => {
         SDK.request({
             method: "GET",
@@ -188,6 +194,7 @@ const SDK = {
         });
 
     },
+    // Request til at hente de events en bruger deltager i.
     getAttendingEvents: (call) => {
         let studentId = JSON.parse(sessionStorage.getItem("student")).idStudent;
         SDK.request({
@@ -204,6 +211,7 @@ const SDK = {
         });
 
     },
+    // Request til at updatere et event
     updateEvent: (idEvent, eventName, location, price, eventDate, description, call) => {
         SDK.request({
             data: {
@@ -226,7 +234,7 @@ const SDK = {
             call(null, data);
         });
     },
-
+// Request til at hente brugerens profil oplysninger
     getProfile: (call) => {
         SDK.request({
                 method: "GET",
@@ -238,7 +246,7 @@ const SDK = {
             call);
     },
 
-
+// Request til at logge ind.
     login: (email, password, call) => {
         SDK.request({
                 data: {
@@ -252,7 +260,7 @@ const SDK = {
                 if (err) return call(err);
 
 
-// tager alt data der er til token. Det er her den sætter token.
+                // tager alt data der er til token. Det er her den sætter token.
                 sessionStorage.setItem("token", JSON.parse(data));
 
 
@@ -260,6 +268,8 @@ const SDK = {
 
             });
     },
+
+    // Encryption er blevet inspiretet til af jesper.
     Encryption: {
         encrypt: (encrypt) => {
             if (encrypt !== undefined && encrypt.length !== 0) {
